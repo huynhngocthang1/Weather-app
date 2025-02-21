@@ -22,5 +22,10 @@ searchInput.addEventListener('change', (e)=>{
         weatherState.innerHTML = data.weather[0].description || DEFAULT_VALUE;
         weatherIcon.setAttribute('src', `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
         temperature.innerHTML = Math.round(data.main.temp) || DEFAULT_VALUE;
+
+        sunRise.innerHTML = moment.unix(data.sys.sunrise).format('H:mm') || DEFAULT_VALUE;
+        sunSet.innerHTML = moment.unix(data.sys.sunset).format('H:mm') || DEFAULT_VALUE;
+        humidity.innerHTML = data.main.humidity || DEFAULT_VALUE;
+        windSpeed.innerHTML = data.wind.speed ? (data.wind.speed * 3.6).toFixed(2) + ' km/h' : DEFAULT_VALUE;
     });
 })
